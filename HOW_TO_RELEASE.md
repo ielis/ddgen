@@ -18,6 +18,6 @@
 1. do all the usual Git stuff
 2. run 
     ```bash
-    cd pbga-python
+    cd ddgen
     pip install -e ./
     ```
