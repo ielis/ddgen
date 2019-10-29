@@ -11,6 +11,13 @@
     python -m twine upload -s -i <key_id> dist/*
     ```
     > - `-s` - require signing of packages
-    > - `-i` - identity of the PGP key to use for signing, e.g. `9BEDC8BF`
-    
-*Done!*
+    > - `-i` - identity of the PGP key to use for signing
+
+## How to install into local virtual environment:
+
+1. do all the usual Git stuff
+2. run 
+    ```bash
+    cd pbga-python
+    pip install -e ./
+    ```
