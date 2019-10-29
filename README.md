@@ -19,3 +19,27 @@ from ddgen.utils import txs
 # tx will be `NM_123.4`
 tx = txs.prioritize_refseq_transcripts(['NM_123.4', 'NM_124.4', 'XM_100.1'])
 ```
+
+## Connect to H2 database
+
+The H2 database is a pure Java SQL database, hence it is primarily meant to be used with Java.
+We can connect to the database from Python, if:
+
+- Java is installed on the local machine
+- the local machine runs UNIX-like OS (sorry, Windows users)
+
+In that case:
+```python
+from ddgen.db import H2DbManager
+
+with H2DbManager("path/to/sv_database.mv.db", 
+                 user="sa", 
+                 password="sa") as h2:
+    with h2.get_connection() as conn:
+        with conn.cursor() as cur:
+            # do whatever you want
+            cur.execute('SELECT * FROM PBGA.CLINGEN_TRIPLOSENSITIVITY;')
+            for i, x in zip(range(5), cur.fetchall()):
+                # print first 5 lines 
+                print(x)
+```

@@ -5,7 +5,7 @@ import setuptools
 setuptools.setup(name='ddgen',
                  version=ddgen.__version__,
                  packages=['ddgen'],
-                 install_requires=['pandas>=0.23', 'numpy>=1.16'],
+                 install_requires=['pandas>=0.23', 'numpy>=1.16', 'psycopg2-binary>=2.8.3'],
 
                  long_description=io.open('README.md', encoding='utf-8').read(),
                  long_description_content_type='text/markdown',
@@ -18,5 +18,6 @@ setuptools.setup(name='ddgen',
                  keywords='bioinformatics genomics',
 
                  package_data={'ddgen': ['utils/data/hg19.dict',
-                                         'utils/data/hg38.dict']},
+                                         'utils/data/hg38.dict',
+                                         'db/jar/h2-1.4.199.jar']},
                  test_suite='tests')
