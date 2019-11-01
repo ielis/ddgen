@@ -32,13 +32,13 @@ In that case:
 ```python
 from ddgen.db import H2DbManager
 
-with H2DbManager("path/to/sv_database.mv.db", 
+with H2DbManager("path/to/database.mv.db", 
                  user="sa", 
                  password="sa") as h2:
     with h2.get_connection() as conn:
         with conn.cursor() as cur:
             # do whatever you want
-            cur.execute('SELECT * FROM PBGA.CLINGEN_TRIPLOSENSITIVITY;')
+            cur.execute('SELECT * FROM DB.TABLE;')
             for i, x in zip(range(5), cur.fetchall()):
                 # print first 5 lines 
                 print(x)
