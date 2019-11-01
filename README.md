@@ -43,3 +43,12 @@ with H2DbManager("path/to/sv_database.mv.db",
                 # print first 5 lines 
                 print(x)
 ```
+
+## Setup logging
+
+Quick setup of Python built-in `logging` library:
+
+```python
+from ddgen.utils import setup_logging
+setup_logging()
+```
