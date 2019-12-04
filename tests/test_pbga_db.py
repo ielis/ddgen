@@ -17,7 +17,7 @@ class TestH2DbManager(unittest.TestCase):
         self.assertTrue(folder.endswith("data"))
         self.assertEqual("hg19_sv_database", dbfile)
 
-    def test_something(self):
+    def test_fetch_some_data(self):
         with H2DbManager(self._db_path, "sa", "sa") as h2:
             with h2.get_connection() as conn:
                 with conn.cursor() as cur:

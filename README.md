@@ -20,6 +20,36 @@ from ddgen.utils import txs
 tx = txs.prioritize_refseq_transcripts(['NM_123.4', 'NM_124.4', 'XM_100.1'])
 ```
 
+
+## Get priority for *Jannovar* variant effects
+
+Jannovar assigns one or more effects to a variant. The effects look like
+- `MISSENSE_VARIANT`,
+- `STOP_GAINED`,
+- `SPLICE_DONOR_VARIANT`,
+ - `CODING_TRANSCRIPT_VARIANT`, etc.
+
+The effects are sorted in order of decreasing putative pathogenicity (i.e. `CODING_TRANSCRIPT_VARIANT` is likely to be less deleterious than `STOP_GAINED` in general).
+
+If the variant affects multiple transcripts, it can have different effects on each of them. In some situations, it might be useful to select and evaluate only the most serious effect.
+
+In order to make the selection, we work with concept of variant effect *priority*. The lower the number representing the priority, the higher the priority.
+
+We can do it by comparing effect priorities:
+```python
+from ddgen.utils import get_variant_effect_priority, VARIANT_EFFECT_PRIORITIES
+
+# `p` is 21 
+p = get_variant_effect_priority('MISSENSE_VARIANT')
+
+# `u` is -1
+u = get_variant_effect_priority('GIBBERISH')
+
+# `p` is 21 again
+p = VARIANT_EFFECT_PRIORITIES['MISSENSE_VARIANT']
+```
+
+
 ## Connect to H2 database
 
 The H2 database is a pure Java SQL database, hence it is primarily meant to be used with Java.
