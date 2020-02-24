@@ -1,18 +1,20 @@
 import logging
-
 import os
-import psycopg2 as pg
 import subprocess
 import time
 
+import psycopg2 as pg
 from pkg_resources import resource_filename
 
 h2_jar = resource_filename(__name__, "jar/h2-1.4.199.jar")
+default_h2_version = '1.4.200'
+supported_h2_versions = ('1.4.199', '1.4.200')
 
 
 class H2DbManager:
 
-    def __init__(self, db_path: str, user: str, password: str, host: str = 'localhost', port: str = '5435'):
+    def __init__(self, db_path: str, user: str, password: str, host: str = 'localhost', port: str = '5435',
+                 h2_version='1.4.200'):
         """Create H2 manager using provided H2 database file and credentials.
 
         :param db_path: path to database file
@@ -20,6 +22,7 @@ class H2DbManager:
         :param password: password to use
         :param host: host address
         :param port: port in usage
+        :param h2_version: H2 version to use, choose from {1.4.199, 1.4.200}
         """
         self._logger = logging.getLogger(__name__)
         self._db_dir, self._db_filename = self.split_db_path(db_path)
@@ -29,6 +32,14 @@ class H2DbManager:
         self._port = port
         self._url = ''
         self._cp = None
+        if h2_version not in supported_h2_versions:
+            self._logger.warning(
+                "H2 version `{}` not supported. Falling back to {}".format(h2_version, default_h2_version))
+            self._h2_version = default_h2_version
+        else:
+            self._h2_version = h2_version
+        self._h2_jar = resource_filename(__name__, "jar/h2-{}.jar".format(self._h2_version))
+
         self._perform_checks()
 
     def __enter__(self):
