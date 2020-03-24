@@ -8,14 +8,14 @@ from ddgen.db import H2DbManager
 class TestH2DbManager(unittest.TestCase):
 
     def setUp(self) -> None:
-        self._db_path = resource_filename(__name__, "data/hg19_sv_database.mv.db")
+        self._db_path = resource_filename(__name__, "test_data/hg19_sv_database.mv.db")
 
     def test_java_is_installed_in_system(self):
         self.assertTrue(H2DbManager.check_java_is_in_system())
 
     def test_split_db_path_works(self):
         folder, dbfile = H2DbManager.split_db_path(self._db_path)
-        self.assertTrue(folder.endswith("data"))
+        self.assertTrue(folder.endswith("test_data"))
         self.assertEqual("hg19_sv_database", dbfile)
 
     def test_fetch_some_data(self):

@@ -22,5 +22,4 @@ setuptools.setup(name='ddgen',
 
                  package_data={'ddgen': ['utils/data/hg19.dict',
                                          'utils/data/hg38.dict'] +
-                                        ['db/jar/h2-{}.jar'.format(version) for version in supported_h2_versions]},
-                 test_suite='tests')
+                                        ['db/jar/h2-{}.jar'.format(version) for version in supported_h2_versions]})

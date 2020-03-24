@@ -8,10 +8,10 @@ from ddgen.utils import GenomeIntervalGenerator
 class TestGenomeIntervalGenerator(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.test_dict_path = resource_filename(__name__, 'data/test.dict')
+        self.test_dict_path = resource_filename(__name__, 'test_data/test.dict')
 
     def test_load_bundled_seq_dicts(self) -> None:
-        import tests.test_utils as tu
+        import ddgen.test_utils as tu
         # hg19
         gig = GenomeIntervalGenerator('hg19')
         self.assertTupleEqual(gig.get_known_contigs(), tu.expected_hg19_contigs)
