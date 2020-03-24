@@ -14,10 +14,10 @@ If we have multiple transcripts from a single source, we want to select the one 
 > E.g. `NM_123.4` has higher priority than `NM_124.4`.
 
 ```python
-from ddgen.utils import _txs
+from ddgen.utils import prioritize_refseq_transcripts
 
 # tx will be `NM_123.4`
-tx = _txs.prioritize_refseq_transcripts(['NM_123.4', 'NM_124.4', 'XM_100.1'])
+tx = prioritize_refseq_transcripts(['NM_123.4', 'NM_124.4', 'XM_100.1'])
 ```
 
 
