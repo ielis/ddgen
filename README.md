@@ -27,7 +27,7 @@ Jannovar assigns one or more effects to a variant. The effects look like
 - `MISSENSE_VARIANT`,
 - `STOP_GAINED`,
 - `SPLICE_DONOR_VARIANT`,
- - `CODING_TRANSCRIPT_VARIANT`, etc.
+- `CODING_TRANSCRIPT_VARIANT`, etc.
 
 The effects are sorted in order of decreasing putative pathogenicity (i.e. `CODING_TRANSCRIPT_VARIANT` is likely to be less deleterious than `STOP_GAINED` in general).
 
