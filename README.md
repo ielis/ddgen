@@ -1,4 +1,8 @@
 # ddgen
+
+[![Build Status](https://travis-ci.org/ielis/ddgen.svg?branch=master)](https://travis-ci.org/ielis/ddgen)
+[![PyPI version](https://badge.fury.io/py/ddgen.svg)](https://badge.fury.io/py/ddgen)
+
 Library of Python utilities that I needed so many times in the past
 
 
@@ -27,7 +31,7 @@ Jannovar assigns one or more effects to a variant. The effects look like
 - `MISSENSE_VARIANT`,
 - `STOP_GAINED`,
 - `SPLICE_DONOR_VARIANT`,
- - `CODING_TRANSCRIPT_VARIANT`, etc.
+- `CODING_TRANSCRIPT_VARIANT`, etc.
 
 The effects are sorted in order of decreasing putative pathogenicity (i.e. `CODING_TRANSCRIPT_VARIANT` is likely to be less deleterious than `STOP_GAINED` in general).
 
@@ -67,7 +71,7 @@ with H2DbManager("path/to/database.mv.db",
                  password="sa") as h2:
     with h2.get_connection() as conn:
         with conn.cursor() as cur:
-            # do whatever you want
+            # do whatever you want with the connection/cursor
             cur.execute('SELECT * FROM DB.TABLE;')
             for i, x in zip(range(5), cur.fetchall()):
                 # print first 5 lines 

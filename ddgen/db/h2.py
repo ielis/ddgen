@@ -13,7 +13,7 @@ supported_h2_versions = ('1.4.199', '1.4.200')
 
 class H2DbManager:
 
-    def __init__(self, db_path: str, user: str, password: str, host: str = 'localhost', port: str = '5435',
+    def __init__(self, db_path: str, user: str, password: str, host: str = 'localhost', port: str = '65435',
                  h2_version='1.4.200'):
         """Create H2 manager using provided H2 database file and credentials.
 

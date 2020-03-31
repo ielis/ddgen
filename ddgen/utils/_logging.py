@@ -3,7 +3,7 @@ import logging
 DEFAULT_LOG_FMT = '%(asctime)s %(name)-20s %(levelname)-3s : %(message)s'
 
 
-def setup_logging(verbosity='info', filename='main.log',
+def setup_logging(verbosity='info', filename=None,
                   log_fmt=DEFAULT_LOG_FMT) -> None:
     """
     Create a basic configuration for the logging library. Set up console and file handler using provided `log_fmt`.
@@ -12,19 +12,20 @@ def setup_logging(verbosity='info', filename='main.log',
     :param log_fmt: format string for logging
     :return: None
     """
-    logging.basicConfig(level=logging.DEBUG,
-                        format=log_fmt,
-                        filename=filename,
-                        filemode="w")
-    # define a Handler which writes INFO messages or higher to the sys.stderr
-    console = logging.StreamHandler()
-    console.setLevel(parse_logging_level(verbosity))
-    # set a format which is simpler for console use
+    # TODO - find out how to log to file only if filename is specified
+    level = parse_logging_level(verbosity)
+    # create logger
+    logger = logging.getLogger()
+    logger.setLevel(level)
+    # create console handler and set level to debug
+    ch = logging.StreamHandler()
+    ch.setLevel(level)
+    # create formatter
     formatter = logging.Formatter(log_fmt)
-    # tell the handler to use this format
-    console.setFormatter(formatter)
-    # add the handler to the root logger
-    logging.getLogger('').addHandler(console)
+    # add formatter to ch
+    ch.setFormatter(formatter)
+    # add ch to logger
+    logger.addHandler(ch)
 
 
 def parse_logging_level(verbosity: str) -> int:
