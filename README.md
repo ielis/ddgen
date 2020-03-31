@@ -67,7 +67,7 @@ with H2DbManager("path/to/database.mv.db",
                  password="sa") as h2:
     with h2.get_connection() as conn:
         with conn.cursor() as cur:
-            # do whatever you want
+            # do whatever you want with the connection/cursor
             cur.execute('SELECT * FROM DB.TABLE;')
             for i, x in zip(range(5), cur.fetchall()):
                 # print first 5 lines 
