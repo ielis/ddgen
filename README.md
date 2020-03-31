@@ -1,6 +1,7 @@
 # ddgen
 
 [![Build Status](https://travis-ci.org/ielis/ddgen.svg?branch=master)](https://travis-ci.org/ielis/ddgen)
+[![PyPI version](https://badge.fury.io/py/ddgen.svg)](https://badge.fury.io/py/ddgen)
 
 Library of Python utilities that I needed so many times in the past
 
