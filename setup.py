@@ -30,6 +30,7 @@ setup(name='ddgen',
           '': ['test_data/*'],
           'ddgen': ['utils/data/hg19.dict',
                     'utils/data/hg38.dict'] +
-                   ['db/jar/h2-{}.jar'.format(version) for version in supported_h2_versions]}
+                   ['db/jar/h2-{}.jar'.format(version) for version in supported_h2_versions]},
+      data_files=[('', ['requirements.txt'])]
 
       )
