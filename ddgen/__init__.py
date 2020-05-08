@@ -1,4 +1,4 @@
-__version__ = '0.0.9.post1'
+__version__ = '0.0.10.post1'
 
 from . import db
 from . import utils
